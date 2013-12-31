@@ -1,3 +1,6 @@
 players.json
 players_list.json
 archive/
+
+node_modules/
+src/
