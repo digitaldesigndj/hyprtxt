@@ -2,19 +2,84 @@
 <html>
 <head>
 <!-- Thanks for taking the time to check out my markup! -->
-
 	<title>Hyprtxt</title>
-	<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates|Montserrat' rel='stylesheet' type='text/css'>
 	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
 	body {
+		font-family: 'Montserrat', sans-serif;
+		margin: 0;
+		padding: 0;
+		-webkit-font-smoothing: antialiased;
+		color: #666;
+	}
+	hr {
+		border: 1px solid #00efcb;
+		margin: 2em 0;
+	}
+	a:link {
+		color: #00afef;
+		text-decoration: none;
+	}
+	a:visited,
+	a:hover {
+		color: #0075f2;
+		text-decoration: underline;
+	}
+	a:active {
+		color: #00efcb;
+	}
+	p,
+	ul,
+	ol {
+		line-height: 1.8;
+		margin: 2em 0;
+		position: relative;
+	}
+	h1,
+	h2,
+	h3 {
 		font-family: 'Montserrat Alternates', sans-serif;
+		font-size: 2em;
+		line-height: 1.4;
+		font-weight: 500;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		text-align: center;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+	h3 {
+		font-size: 24px;
+		text-align: center;
+	}
+
+	.header {
+		height: 130px;
+		margin: 0 0 50px 0;
+		background: #0075f2;
+		background: -moz-linear-gradient(-30deg,  #0075f2 0%, #00afef 46%, #00efcb 100%);
+		background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#0075f2), color-stop(46%,#00afef), color-stop(100%,#00efcb));
+		background: -webkit-linear-gradient(-30deg,  #0075f2 0%,#00afef 46%,#00efcb 100%);
+		background: -o-linear-gradient(-30deg,  #0075f2 0%,#00afef 46%,#00efcb 100%);
+		background: -ms-linear-gradient(-30deg,  #0075f2 0%,#00afef 46%,#00efcb 100%);
+		background: linear-gradient(135deg,  #0075f2 0%,#00afef 46%,#00efcb 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0075f2', endColorstr='#00efcb',GradientType=1 );
+	}
+	.header h1 {
+		letter-spacing: 1px;
+		text-transform: capitalize;
+		margin: 0;
+		padding: 30px 0 0 0;
+		color: white;
+	}
+	.content {
 		margin: 0 auto;
 		width: 480px;
 		max-width: 90%;
 		letter-spacing: -1px;
-		text-shadow: 0 1px 0 #ffffff;
-		background-color: #f0f0f0;
-		background-image: url('data:image/png;base64,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');
 	}
 	h1 {
 		text-align: center;
@@ -22,18 +87,45 @@
 		font-size: 52px;
 	}
 	</style>
-
 </head>
 <body>
-	<h1>Hyprtxt</h1>
-	<p>Websites, Applications, Solutions</p>
-	<p>Contact: <a href="mailto:tdy721@gmail.com">Taylor Young</a></p>
-	<hr />
-	<h3>Work</h3>
-	<ul>
-		<li><a href="http://standishsalongoods.com">Standish Salon Goods</a> - 3DCart Theme</li>
-		<li><a href="https://github.com/reapmarketing/standish-bar">Standish Bar</a> - Custom CMS for Promotions</li>
-		<li><a href="http://boundstar.com">BoundStar</a> -  Top 5 StarBound Game Server + Website</li>
-	</ul>
+	<div class="header">
+		<h1>Hyprtxt</h1>
+	</div>
+	<div class="content">
+		<p>Websites, Applications, Solutions</p>
+		<p>Contact: <a href="mailto:tdy721@gmail.com">Taylor Young</a></p>
+		<hr />
+		<h3>Work</h3>
+		<ul>
+			<li><a href="http://standishsalongoods.com">Standish Salon Goods</a> - 3DCart Theme</li>
+			<li><a href="https://github.com/reapmarketing/standish-bar">Standish Bar</a> - Custom CMS for Promotions Bar</li>
+			<li><a href="http://boundstar.com">BoundStar</a> -  Top 5 StarBound Game Server + Website</li>
+		</ul>
+		<hr />
+		<h3>Taylor's Experience</h3>
+		<p>A selection of sites I have contributed to.</p>
+		<ul>
+			<li><a href="http://www.watchstation.com">Watch Station International</a></li>
+			<li><a href="http://www.michele.com">Michele</a></li>
+			<li><a href="http://store.dieseltimeframes.com/">Diesel</a></li>
+			<li><a href="http://www.fox.com">Fox Broadcasting</a></li>
+			<li><a href="http://www.fox.com/dance/">So You Think You Can Dance</a></li>
+			<li><a href="http://www.bttoronto.ca">Breakfast Television</a></li>
+			<li><a href="http://www.citytv.com/toronto/">CityTV</a></li>
+			<li><a href="http://www.680news.com/">Green</a> <a href="http://www.news1130.com/">Radio</a> <a href="http://www.660news.com/">Sites</a></li>
+			<!-- http://tunein.com/radio/stations/Rogers-Broadcasting-Radio-Stations-a38462/ -->
+			<li><a href="https://www.spray-n-growgardening.com/">Spray-n-Grow Gardening</a></li>
+		</ul>
+		<hr />
+		<h3>Employment</h3>
+		<p>A selection of comapaines I have worked for.</p>
+		<ul>
+			<li><a href="http://modassicmarketing.com">MODassic</a></li>
+			<li><a href="http://reapmarketing.com">Reap Marketing</a></li>
+			<li><a href="http://x-team.com">X-Team</a></li>
+			<li><a href="http://www.dreamjob.com">Technical Resource Group</a></li>
+		</ul>
+	</div>
 </body>
 </html>
