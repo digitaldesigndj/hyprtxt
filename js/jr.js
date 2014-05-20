@@ -6,9 +6,8 @@ var jr = {
 	markdownContent: null,
 	plugins: {}, // Defined below
 	styles : [
-		'themes/default.css',
-		'//fonts.googleapis.com/css?family=Average',
-		'//fonts.googleapis.com/css?family=Roboto:400,700'
+		'themes/hyprtxt.css',
+		'http://fonts.googleapis.com/css?family=Montserrat+Alternates|Montserrat'
 	],
 	scripts : [
 		'js/showdown.js'
@@ -16,7 +15,6 @@ var jr = {
 		// '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
 	],
 };
-
 
 /**
  * Jr. Plugins go here
@@ -43,25 +41,24 @@ jr.plugins.time = function(value) {
 	}
 }
 
-jr.plugins.gist = function(gistId, element){
-	var callbackName = "gist_callback";
-	window[callbackName] = function (gistData) {
+// jr.plugins.gist = function(gistId, element){
+// 	var callbackName = "gist_callback";
+// 	window[callbackName] = function (gistData) {
 		
-		delete window[callbackName];
-		var html = '<link rel="stylesheet" href="' + gistData.stylesheet + '"></link>';
-		html += gistData.div;
+// 		delete window[callbackName];
+// 		var html = '<link rel="stylesheet" href="' + gistData.stylesheet + '"></link>';
+// 		html += gistData.div;
 
-		var gistContainer = document.createElement('div');
-		gistContainer.innerHTML = html;
+// 		var gistContainer = document.createElement('div');
+// 		gistContainer.innerHTML = html;
 		
-		element.parentNode.replaceChild(gistContainer, element);
-	};
+// 		element.parentNode.replaceChild(gistContainer, element);
+// 	};
 
-	var script = document.createElement("script");
-	script.setAttribute("src", "https://gist.github.com/" + gistId + ".json?callback=" + callbackName);
-	document.body.appendChild(script);
-}
-
+// 	var script = document.createElement("script");
+// 	script.setAttribute("src", "https://gist.github.com/" + gistId + ".json?callback=" + callbackName);
+// 	document.body.appendChild(script);
+// }
 
 /**
  * CAREFUL WITH THE MAGIC BELOW ↓
@@ -156,9 +153,9 @@ jr.run = function(markdownContent) {
 	var html = converter.makeHtml(markdownContent);
 
 	// Basic HTML5 shell wrapped in a div
-	jr.body.innerHTML = '<div><main role="main">\
-		<article>' + html + '</article>\
-	</main><footer></footer></div>';
+	jr.body.innerHTML = '<title>hyprtxt</title><div class="header"><h1><a href="/">Hyprtxt</a></h1></div>\
+	<div class="content">' + html + '</div>\
+	</main><footer></footer>';
 
 	// Allow plugins to process shortcode embeds
 	jr.traverseChildNodes(jr.body);
