@@ -1,3 +1,3 @@
 # Hyprtxt Website
 
-[Jr Powered](https://github.com/xeoncross/Jr)
+A really flat (fast?) website
